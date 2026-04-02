@@ -26,7 +26,7 @@ export default function ContactUs() {
           setLoading(true);
 
           try {
-               const res = await fetch("http://localhost:5000/contact", {
+               const res = await fetch("https://eleltech-website.onrender.com/contact", {
                     method: "POST",
                     headers: {
                          "Content-Type": "application/json"
