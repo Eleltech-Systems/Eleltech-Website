@@ -4,7 +4,7 @@ import { translations } from '../../../utils/translation';
 import { FaTiktok, FaYoutube } from 'react-icons/fa';
 
 export default function DawitEkub({ lang }) {
-     console.log(lang)
+
      return (
           <div className='bg-indigo-300/40 mt-5 rounded-2xl'>
                <div className="rounded-t-2xl bg-indigo-300/40 text-white py-2 md:py-3 md:px-6">
