@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
-import elellogo1 from '../assets/images/elellogo1.png';
+import elellogo1 from '../assets/images/elellogo1.webp';
 
 export default function Header() {
      const [activeSection, setActiveSection] = useState("home");

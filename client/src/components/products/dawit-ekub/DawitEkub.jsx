@@ -1,6 +1,5 @@
-import moneyLogo2 from '../../../assets/images/moneyLogo2.png'
-import dawitekubmainphoto3 from '../../../assets/images/dawitekubmainphoto3.png'
-import { motion } from "framer-motion";
+import moneyLogo2 from '../../../assets/images/moneyLogo2.webp'
+import dawitekubmainphoto3 from '../../../assets/images/dawitekubmainphoto3.webp'
 import { translations } from '../../../utils/translation';
 import { FaTiktok, FaYoutube } from 'react-icons/fa';
 

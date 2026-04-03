@@ -1,7 +1,6 @@
-import appdevelpment from '../assets/images/appdevelopment.png';
-import softwaredevelopment from '../assets/images/softwaredevelopment.png';
-import webapplication from '../assets/images/webapplication.png';
-import { TailSpin } from 'react-loader-spinner'
+import appdevelpment from '../assets/images/appdevelopment.webp';
+import softwaredevelopment from '../assets/images/softwaredevelopment.webp';
+import webapplication from '../assets/images/webapplication.webp';
 
 
 export default function About() {

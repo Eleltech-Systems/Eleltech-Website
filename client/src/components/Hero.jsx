@@ -1,4 +1,4 @@
-import heroo from '../assets/images/heroo.png';
+import heroo from '../assets/images/heroo.webp';
 import { motion } from "framer-motion";
 
 export default function Hero() {

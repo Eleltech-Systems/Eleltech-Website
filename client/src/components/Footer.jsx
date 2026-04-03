@@ -1,5 +1,5 @@
-import { FaFacebook, FaTelegram, FaLinkedin, FaGithub, FaYoutube, FaTiktok, FaInstagram } from "react-icons/fa";
-import elellogo1 from '../assets/images/elellogo1.png'
+import { FaFacebook, FaYoutube, FaTiktok, FaInstagram } from "react-icons/fa";
+import elellogo1 from '../assets/images/elellogo1.webp'
 
 export default function Footer() {
      return (
