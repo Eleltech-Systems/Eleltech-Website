@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
@@ -49,13 +49,13 @@ export default function Header() {
                className="fixed top-0 left-0 right-0 px-4 bg-linear-to-r from-blue-200 via-amber-100 to-orange-200 backdrop-blur-sm z-50">
 
                <div className="w-full flex justify-between items-center h-12 sm:h-16 lg:max-w-7xl mx-auto">
-                    <div className='bg-orange-500 rounded-lg  shadow-lg'>
+                    <a href='#' onClick={() => setActiveSection("home")} className='bg-orange-500 rounded-lg  shadow-lg'>
                          <img
                               src={elellogo1}
                               alt="elellogo"
                               className="w-16 sm:w-20"
                          />
-                    </div>
+                    </a>
 
 
                     {/* ------ Navigation Links - Desktop ------*/}
