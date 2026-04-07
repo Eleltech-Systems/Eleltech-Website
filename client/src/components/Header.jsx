@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import elellogo1 from '../assets/images/elellogo1.webp';
+import { LanguageContext } from './LanguageContext';
 
 export default function Header() {
      const [activeSection, setActiveSection] = useState("home");
      const [isMenuOpen, setIsMenuOpen] = useState(false)
+     const { language, setLanguage } = useContext(LanguageContext);
 
-     const navigate = useNavigate();
-     const location = useLocation();
+
+     const toggleLanguage = () => {
+          setLanguage(language === "en" ? "am" : "en");
+     };
+
 
      const navLinksDesktop = [
-          { label: "Home", id: "home" },
-          { label: "About", id: "about" },
-          { label: "Products", id: "products" },
-          { label: "Contact Us", id: "contact" },
+          { label: language === "am" ? "መነሻ" : "Home", id: "home" },
+          { label: language === "am" ? "ስለ እኛ" : "About", id: "about" },
+          { label: language === "am" ? "ምርቶቻችን" : "Products", id: "products" },
+          { label: language === "am" ? "ያግኙን" : "Contact Us", id: "contact" },
      ];
 
      const navLinksMobile = [
-          { label: "Home", id: "home" },
-          { label: "About", id: "about" },
-          { label: "Products", id: "products" },
+          { label: language === "am" ? "መነሻ" : "Home", id: "home" },
+          { label: language === "am" ? "ስለ እኛ" : "About", id: "about" },
+          { label: language === "am" ? "ምርቶቻችን" : "Products", id: "products" },
      ];
 
 
@@ -57,7 +61,6 @@ export default function Header() {
                          />
                     </a>
 
-
                     {/* ------ Navigation Links - Desktop ------*/}
                     <motion.div
                          variants={fadeIn('down', 0.3)}
@@ -74,16 +77,26 @@ export default function Header() {
                                    {link.label}
                               </button>
                          ))}
+
+                         <button onClick={toggleLanguage} className='bg-orange-600 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
+                              {language === "en" ? "አማ" : "EN"}
+                         </button>
                     </motion.div>
 
 
-                    {/* ----------- Mobile Menu Button --------- */}
-                    <motion.button
-                         variants={fadeIn('down', 0.1)}
-                         className="sm:hidden p-2"
-                         onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                         {isMenuOpen ? (<HiX className="h-6 w-6" />) : (<HiMenu className="h-6 w-6" />)}
-                    </motion.button>
+                    <div className='flex items-center sm:hidden'>
+                         <button onClick={toggleLanguage} className='bg-orange-600 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
+                              {language === "en" ? "አማ" : "EN"}
+                         </button>
+
+                         {/* ----------- Mobile Menu Button --------- */}
+                         <motion.button
+                              variants={fadeIn('down', 0.1)}
+                              className="sm:hidden p-2"
+                              onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                              {isMenuOpen ? (<HiX className="h-6 w-6" />) : (<HiMenu className="h-6 w-6" />)}
+                         </motion.button>
+                    </div>
                </div>
 
 
@@ -114,7 +127,7 @@ export default function Header() {
                                    onClick={() => { setIsMenuOpen(false) }}
                                    className="w-full bg-orange-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all"
                               >
-                                   <a href="#contact">Get in touch</a>
+                                   <a href="#contact">{language === "en" ? "Get in touch" : "ያ ግ ኙ ን"}</a>
                               </button>
                          </motion.div>
                     </motion.div>

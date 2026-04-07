@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { TfiEmail } from "react-icons/tfi";
 import { FaLocationDot } from "react-icons/fa6";
 import { useForm } from 'react-hook-form';
 import { useEffect } from "react";
 import { ColorRing } from 'react-loader-spinner'
+import { LanguageContext } from './LanguageContext';
 
 export default function ContactUs() {
+
+     const { language } = useContext(LanguageContext);
 
      const [loading, setLoading] = useState(false);
      const [successMessage, setSuccessMessage] = useState(null);
@@ -55,32 +58,38 @@ export default function ContactUs() {
      return (
           <div className="bg-indigo-300/40 py-4 px-3 rounded-2xl md:py-16 lg:px-28 ">
                <h2 className="text-2xl font-semibold text-center md:text-3xl mb-8 md:mb-20">
-                    Contact Us
+                    {language === "en" ? "Contact Us" : "ያ ግ ኙ ን"}
                </h2>
 
                <div className="grid md:grid-cols-2 gap-10">
                     <div>
                          <h3 className="text-xl md:text-2xl font-semibold mb-4">
-                              Eleltech Systems
+                              {language === "en" ? "Eleltech Systems" : "እልልቴክ ሲስተምስ (Eleltech Systems)"}
                          </h3>
                          <p className="text-sm md:text-lg leading-relaxed text-justify">
-                              If you have any questions, feedback, or suggestions regarding our products, please use this form to
-                              contact us. We will be happy to hear from you.
+                              {language === "en" ?
+                                   `If you have any questions, feedback, or suggestions regarding our products, 
+                                    please use this form to contact us. We will be happy to hear from you.`
+                                   :
+                                   `ስለ ምርቶቻችን ማንኛውም ጥያቄ፣ አስተያየት ወይም ጥቆማ ካለዎት እባክዎ ይህንን ቅጽ በመጠቀም ያግኙን። 
+                                    ከእርስዎ መስማት ደስ ያሰኘናል።
+                                   `
+                              }
                          </p>
                          <p className="flex text-sm items-center gap-3 font-semibold mt-4">
                               <TfiEmail color="orange" />
-                              Email: eleltech21@gmail.com
+                              {language === "en" ? "Email: eleltech21@gmail.com" : "ኢሜይል፦ Eleltechsystems@gmail.com"}
                          </p>
                          <p className="flex text-sm items-center gap-3 font-semibold">
                               <FaLocationDot color="orange" />
-                              Location: Addis Ababa, Ethiopia
+                              {language === "en" ? "Location: Addis Ababa, Ethiopia" : "አድራሻ፦ አዲስ አበባ፣ ኢትዮጵያ"}
                          </p>
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-3">
                          <input
                               type="text"
-                              placeholder="Full name"
+                              placeholder={language === "en" ? "Full Name" : "ሙሉ ስም"}
                               {...register('name', { required: "Name is required *" })}
                               className="w-full focus:outline-none focus:border-2 border border-gray-400 p-3 mt-4 rounded"
                          />
@@ -88,7 +97,7 @@ export default function ContactUs() {
 
                          <input
                               type="email"
-                              placeholder="Email"
+                              placeholder={language === "en" ? "Email" : "ኢሜይል"}
                               {...register('email', {
                                    required: "Email is required *",
                                    pattern: {
@@ -102,13 +111,13 @@ export default function ContactUs() {
 
                          <input
                               type="text"
-                              placeholder="Subject"
+                              placeholder={language === "en" ? "Subject" : "ርዕሰ ጉዳይ"}
                               {...register('subject', { required: false })}
                               className="w-full focus:outline-none focus:border-2 border border-gray-400 p-3 mt-4 rounded"
                          />
 
                          <textarea
-                              placeholder="Message"
+                              placeholder={language === "en" ? "Message" : "መልእክት"}
                               {...register('message', { required: "Write your message here" })}
                               className="w-full focus:outline-none focus:border-2 border border-gray-400 p-3 mt-4 rounded"
                               rows="5"
@@ -121,9 +130,14 @@ export default function ContactUs() {
                                    disabled={loading}
                                    className="bg-orange-600 hover:bg-gray-600 text-white w-28 h-8 mt-3 rounded"
                               >
-                                   {loading ? <div className="flex items-center justify-center h-full">
-                                        <ColorRing height="30" width="30" visible={loading} color="#36d7b7" />
-                                   </div> : <span className="font-semibold text-sm">{"Send"}</span>}
+                                   {loading ?
+                                        <div className="flex items-center justify-center h-full">
+                                             <ColorRing height="30" width="30" visible={loading} color="#36d7b7" />
+                                        </div>
+                                        :
+                                        <span className="font-semibold text-sm">
+                                             {language === "en" ? "Send" : "ይላኩ"}
+                                        </span>}
                               </button>
                          </div>
                     </form>

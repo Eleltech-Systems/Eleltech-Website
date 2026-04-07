@@ -1,7 +1,12 @@
+import { useContext } from 'react';
 import heroo from '../assets/images/heroo.webp';
 import { motion } from "framer-motion";
+import { LanguageContext } from './LanguageContext';
 
 export default function Hero() {
+
+     const { language } = useContext(LanguageContext);
+
      return (
           <div>
                {/* Mobile Title */}
@@ -12,10 +17,10 @@ export default function Hero() {
                     transition={{ duration: 0.6 }}
                >
                     <p className="md:hidden text-lg font-light tracking-wider mb-3">
-                         CREATIVE
+                         {language === "en" ? "CREATIVE" : "ፈጠራ የታከለበት"}
                     </p>
                     <h1 className="md:hidden text-4xl font-extrabold mb-4 leading-tight">
-                         Eleltech Systems
+                         {language === "en" ? "Eleltech Systems" : "እልልቴክ ሲስተምስ"}
                     </h1>
                </motion.div>
 
@@ -42,7 +47,7 @@ export default function Hero() {
                                    visible: { opacity: 1, y: 0 },
                               }}
                          >
-                              CREATIVE
+                              {language === "en" ? "CREATIVE" : "ፈጠራ የታከለበት"}
                          </motion.p>
 
                          <motion.h1
@@ -52,7 +57,7 @@ export default function Hero() {
                                    visible: { opacity: 1, y: 0 },
                               }}
                          >
-                              Eleltech Systems
+                              {language === "en" ? "Eleltech Systems" : "እልልቴክ ሲስተምስ"}
                          </motion.h1>
 
                          <motion.p
@@ -60,11 +65,19 @@ export default function Hero() {
                               variants={{
                                    hidden: { opacity: 0, y: 10 },
                                    visible: { opacity: 1, y: 0 },
-                              }}
-                         >
-                              We design and develop innovative applications across mobile and web platforms to empower modern businesses.
-                              Every solution we build is driven by efficiency, reliability, and performance for helping organizations reach their goals faster.
-                              With Eleltech Systems, you gain a trusted technology partner committed to your long-term success.
+                              }}>
+                              {language === "en" ?
+                                   `We design and develop innovative applications across mobile, computer and web platforms to 
+                                   empower modern businesses. Every solution we build is driven by efficiency, reliability, and 
+                                   performance for helping organizations reach their goals faster. With Eleltech Systems, you 
+                                   gain a trusted technology partner committed to your long-term success.
+                                   `
+                                   :
+                                   `ዘመናዊ የንግድ ተቋማትን ለማብቃት፣ በሞባይል ፣ በኮምፕዩተር እና በዌብሳይት ዘርፎች የላቀ ፋይዳ ያላቸው መተግበሪያዎችን እንነድፋለን፤ እናለማለንም። 
+                                   የምንገነባቸው መፍትሄዎች በሙሉ ተቋማት ግባቸውን በፍጥነት እንዲያሳኩ ለማስቻል በብቃት፣ በአስተማማኝነት እና በጥራት ላይ የተመሰረቱ ናቸው። 
+                                   ከእልልቴክ ሲስተምስ ጋር በመስራት፣ ለረጅም ጊዜ ስኬትዎ የሚተጋ ታማኝ የቴክኖሎጂ አጋር ያገኛሉ።
+                                   `
+                              }
                          </motion.p>
 
                          <motion.a
@@ -78,7 +91,8 @@ export default function Hero() {
                               whileTap={{ scale: 0.95 }}
                               transition={{ duration: 0.3 }}
                          >
-                              View our products
+                              {language === "en" ? "View our products" : "ምርቶቻችንን ይመልከቱ"}
+
                          </motion.a>
                     </motion.div>
 
