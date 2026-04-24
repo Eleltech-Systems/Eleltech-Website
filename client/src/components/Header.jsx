@@ -57,7 +57,7 @@ export default function Header() {
      const handleSignout = async (e) => {
           e.preventDefault();
           try {
-               const res = await fetch("/server/auth/signout", {
+               const res = await fetch("https://eleltech-website.onrender.com/server/auth/signout", {
                     method: 'POST',
                });
                const data = res.json();
