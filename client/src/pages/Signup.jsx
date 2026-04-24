@@ -18,7 +18,7 @@ export default function Signup() {
                setLoading(true);
                setErrorMessage(null);
                setSuccessMessage(null);
-               const res = await fetch('/server/auth/signup', {
+               const res = await fetch('https://eleltech-website.onrender.com/server/auth/signup', {
                     method: 'POST',
                     headers: {
                          'Content-Type': 'application/json',

@@ -29,7 +29,7 @@ export default function ContactUs() {
           setSuccessMessage(null);
 
           try {
-               const res = await fetch('/server/message/create', {
+               const res = await fetch('https://eleltech-website.onrender.com/server/message/create', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData),

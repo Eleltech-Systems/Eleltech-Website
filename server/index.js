@@ -3,10 +3,20 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import messageRoutes from './routes/message.route.js'
 import authRoutes from './routes/auth.route.js';
+import cors from 'cors';
+
 
 dotenv.config();
 
 const app = express();
+
+// app.use(cors({
+//      origin: 'https://www.eleltech.com',
+//      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//      credentials: true
+// }));
+
+app.use(cors());
 
 app.use(express.json());
 

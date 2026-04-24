@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/server': {
-        target: 'https://eleltech-website.onrender.com',
+        target: 'http://localhost:5000',
         secure: false,
       },
     },

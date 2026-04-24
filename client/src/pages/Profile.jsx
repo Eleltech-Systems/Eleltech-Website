@@ -21,7 +21,7 @@ export default function Profile() {
           const fetchMessages = async () => {
                setLoading(true);
                try {
-                    const res = await fetch('/server/message/getmessages');
+                    const res = await fetch('https://eleltech-website.onrender.com/server/message/getmessages');
                     const data = await res.json();
 
                     if (res.ok) {
@@ -43,7 +43,7 @@ export default function Profile() {
      const handleDelete = async (messageId) => {
           setDeletingId(messageId);
           try {
-               const res = await fetch(`/server/message/deleteMessage/${messageId}`, {
+               const res = await fetch(`https://eleltech-website.onrender.com/server/message/deleteMessage/${messageId}`, {
                     method: 'DELETE',
                });
                const data = await res.json();
