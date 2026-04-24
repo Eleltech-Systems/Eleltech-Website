@@ -26,14 +26,14 @@ export default function DawitEkub() {
                                         {language === "en" ?
                                              "Manage your daily, weekly, and monthly Ekub with this app."
                                              :
-                                             "በዚህ መተግበሪያ ዕለታዊ፣ ሳምንታዊ እና ወርሃዊ እቁቦችዎን ያስተዳድሩ፡፡"
+                                             "በዚህ መተግበሪያ ዕለታዊ ፣ ሳምንታዊ እና ወርሃዊ እቁቦችዎን ያስተዳድሩ፡፡"
                                         }
                                    </p>
                               </div>
                          </div>
                          <button className="hidden md:block bg-green-600 self-center text-white md:px-4 py-2.5 rounded-lg hover:bg-green-700 text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-100">
                               <a
-                                   href="https://play.google.com/store/apps"
+                                   href="https://play.google.com/store/apps/details?id=com.eleltech.dawitekub"
                                    target="_blank">
                                    {language === "en" ? "Install Now" : "አሁኑኑ ይጫኑ"}
                               </a>
@@ -93,14 +93,14 @@ export default function DawitEkub() {
                                    `Once an Ekub is active, the app records member details and contribution amounts under their 
                                     respective categories. It generates a dedicated member profile page to track individual 
                                     payments and overall activity. From this profile, you can edit or delete member info, assign 
-                                    lottery numbers, collect payments, issue payouts, send payment confirmations via SMS, and 
-                                    monitor total contributions and due dates.
+                                    lottery numbers, to register when receiving payment and when making a payment, send payment 
+                                    confirmations via SMS, and monitor total contributions and due dates.
                                    `
                                    :
                                    `እቁብዎን ከጀመሩ ቦሀላ በጀመሩት እቁብ አይነት ስር የእቁብ አባሎችዎን መረጃ እና የክፍያ ብር መጠን የሚመዘግብላችሁ 
                                     ሲሆን የእያንዳንዱን አባልዎችዎን የክፍያ እና አጠቃላይ የእቁብ እንቅስቃሴ ለመቆጣጠር የሚያችለውን የአባል መለያ ገጽ 
                                     የሚያዘጋጅልዎ ይሆናል። በአባልዎ መለያ ገጽ ውስጥም የአባልዎን መረጃ ለማስተካከል ወይንም ለመሰረዝ ፣ ዕጣ ቁጥር 
-                                    ለመሰየም ፣ ክፍያ ለመቀበል ፣ እንዲሁም ደራሽ ክፍያ ለመፈፀም ፣ የክፍያውን ማስረጃ መልእክት ለመላክ ፣ የየግዜውን እና 
+                                    ለመሰየም ፣ ክፍያ ሲቀበሉ እንዲሁም ደራሽ ክፍያ ሲፈጽሙ ለመመዝገብ ፣ የክፍያውን ማስረጃ መልእክት ለመላክ ፣ የየግዜውን እና 
                                     የጠቅላላ ክፍያ መረጃ እንዲሁም እስከ የትኛው ቀን ክፍያው እንደተከናወነ ለማወቅ እና ሌሎች አገልግሎቶችን ያገኛሉ።
                                    `
                               }
@@ -219,9 +219,9 @@ export default function DawitEkub() {
                          </div>
                     </div>
                     {/* This is for small device */}
-                    <div className='flex justify-end'>
+                    <div className='flex justify-end mt-8'>
                          <a
-                              href="https://play.google.com/store/apps"
+                              href="https://play.google.com/store/apps/details?id=com.eleltech.dawitekub"
                               target="_blank"
                               className="md:hidden bg-green-500 text-white text-sm py-1 px-3 rounded-t-lg mb-3">
                               {language === "en" ? "Install Now" : "አሁኑኑ ይጫኑ"}
@@ -238,7 +238,7 @@ export default function DawitEkub() {
                                    "በመተግበሪያው የእገዛ ክፍል ላይ እንዴት እቁብዎን እንደሚያስተዳድሩ ሙሉ ማብራሪያ ያገኛሉ።"
                               }
                               {language === "en" ?
-                                   `You can also find video tutorials and detailed explanations on our official channels.`
+                                   ` You can also find video tutorials and detailed explanations on our official channels.`
                                    :
                                    "እንዲሁም በእነዚህ ቻናሎቻችን በ ተንቀሳቃሽ ምስል የታገዘ ማብራሪያ ያገኛሉ።"
                               }
@@ -246,13 +246,13 @@ export default function DawitEkub() {
 
                          <div className="flex gap-4 mt-4 text-xl justify-center">
                               <a
-                                   href="https://www.youtube.com/@EleltechSystems"
+                                   href="https://www.youtube.com/channel/UCGTCBy4tZ-qWEz4hFaHI05w"
                                    target="_blank"
                                    className="hover:text-red-500 text-white">
                                    <FaYoutube />
                               </a>
                               <a
-                                   href="https://www.tiktok.com/@eleltechsystems"
+                                   href="https://www.tiktok.com/@eleltech_systems"
                                    target="_blank"
                                    className="hover:text-purple-500 text-white">
                                    <FaTiktok />

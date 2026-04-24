@@ -27,7 +27,6 @@ export default function About() {
                                የሚፈጥሩ ጠንካራ የሞባይል መተግበሪያዎችን፣ የኮምፒውተር ሶፍትዌሮችን እና በዌብ ላይ የተመሰረቱ ሲስተሞችን እንገነባለን።
                               `
                          }
-
                     </p>
                </div>
 
@@ -72,7 +71,6 @@ export default function About() {
                                    <li>{language === "en" ? "✔ Long-Term Digital Solutions" : "✔ ዘላቂ የዲጂታል መፍትሄዎች"}</li>
                               </ul>
                          </div>
-
                     </div>
                </div>
 
@@ -199,7 +197,6 @@ export default function About() {
                                          ለማስፋት በነጻ የሚቀርቡ ሲሆን፣ ሌሎች ደግሞ ቀጣይነት ያለው ልማትና ፈጠራን ለመደገፍ በተመጣጣኝ ዋጋ ይቀርባሉ። 
                                         `
                                    }
-
                               </p>
                               <p className="text-base md:text-lg leading-relaxed text-justify">
                                    {language === "en" ?

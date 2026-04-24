@@ -3,7 +3,7 @@ import { TfiEmail } from "react-icons/tfi";
 import { FaLocationDot } from "react-icons/fa6";
 import { useForm } from 'react-hook-form';
 import { useEffect } from "react";
-import { ColorRing } from 'react-loader-spinner'
+import { ColorRing } from 'react-loader-spinner';
 import { LanguageContext } from './LanguageContext';
 
 export default function ContactUs() {
@@ -24,31 +24,32 @@ export default function ContactUs() {
      const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
      const onSubmit = async (formData) => {
+          setLoading(true);
           setErrorMessage(null);
           setSuccessMessage(null);
-          setLoading(true);
 
           try {
-               const res = await fetch("https://eleltech-website.onrender.com/contact", {
-                    method: "POST",
-                    headers: {
-                         "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
+               const res = await fetch('/server/message/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
                });
 
-               const result = await res.json();
+               const data = await res.json();
 
-               if (result.success) {
-                    setSuccessMessage("Message sent successfully! Thank you for contacting us.");
-                    reset(); // This is correct way to clear form
-               } else {
-                    setErrorMessage("Failed to send message");
+               // Handle HTTP errors
+               if (!res.ok) {
+                    setErrorMessage(data?.message || "Something went wrong. Try again");
+                    return;
                }
 
+               // Handle success
+               reset();
+               setSuccessMessage("Message sent successfully! Thank you for contacting us.");
+
           } catch (error) {
-               console.error(error);
-               setErrorMessage("Error sending message");
+               // Network error (no internet, server down, etc.)
+               setErrorMessage("Network error. Please check your internet connection.");
           } finally {
                setLoading(false);
           }
@@ -78,11 +79,11 @@ export default function ContactUs() {
                          </p>
                          <p className="flex text-sm items-center gap-3 font-semibold mt-4">
                               <TfiEmail color="orange" />
-                              {language === "en" ? "Email: eleltech21@gmail.com" : "ኢሜይል፦ Eleltechsystems@gmail.com"}
+                              {language === "en" ? "Email: Eleltechsystems@gmail.com" : "ኢሜይል፦ Eleltechsystems@gmail.com"}
                          </p>
                          <p className="flex text-sm items-center gap-3 font-semibold">
                               <FaLocationDot color="orange" />
-                              {language === "en" ? "Location: Addis Ababa, Ethiopia" : "አድራሻ፦ አዲስ አበባ፣ ኢትዮጵያ"}
+                              {language === "en" ? "Location: Addis Ababa, Ethiopia" : "መገኛ ቦታ፦ አዲስ አበባ፣ ኢትዮጵያ"}
                          </p>
                     </div>
 
@@ -90,10 +91,10 @@ export default function ContactUs() {
                          <input
                               type="text"
                               placeholder={language === "en" ? "Full Name" : "ሙሉ ስም"}
-                              {...register('name', { required: "Name is required *" })}
+                              {...register('fullname', { required: "Full name is required *" })}
                               className="w-full focus:outline-none focus:border-2 border border-gray-400 p-3 mt-4 rounded"
                          />
-                         {errors.name && <span className="text-xs text-red-500">{errors.name.message}</span>}
+                         {errors.fullname && <span className="text-xs text-red-500">{errors.fullname.message}</span>}
 
                          <input
                               type="email"
@@ -137,7 +138,8 @@ export default function ContactUs() {
                                         :
                                         <span className="font-semibold text-sm">
                                              {language === "en" ? "Send" : "ይላኩ"}
-                                        </span>}
+                                        </span>
+                                   }
                               </button>
                          </div>
                     </form>

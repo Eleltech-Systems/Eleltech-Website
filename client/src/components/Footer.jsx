@@ -1,4 +1,5 @@
 import { FaFacebook, FaYoutube, FaTiktok, FaInstagram } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa6";
 import elellogo1 from '../assets/images/elellogo1.webp'
 import { useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
@@ -9,9 +10,9 @@ export default function Footer() {
 
      return (
           <footer className="bg-gray-950/40 text-gray-100">
-               <div className="max-w-7xl mx-auto py-12 px-3 flex flex-col md:flex-row justify-between">
+               <div className="max-w-7xl mx-auto pt-12 md:pb-6 px-3 flex flex-col md:flex-row justify-between">
                     <div className="mr-8">
-                         <div className="flex items-center gap-3 mb-4">
+                         <div className="flex items-center gap-3 mb-4 cursor-pointer">
                               <a href="/">
                                    <div className='bg-orange-500 rounded-lg  shadow-lg'>
                                         <img
@@ -39,44 +40,16 @@ export default function Footer() {
                          </p>
                     </div>
 
-                    <div className="flex justify-between flex-wrap py-3 mt-8 gap-8 md:gap-16 md:p-0 md:mt-0">
-                         <div>
-                              <h3 className="text-white font-semibold mb-4">
-                                   {language === "en" ? "Quick Links" : "ፈጣን አገናኞች"}
-                              </h3>
-                              <ul className="space-y-2 text-sm">
-                                   <li>
-                                        <a href="/" className="hover:text-orange-500">
-                                             {language === "en" ? "Home" : "መነሻ"}
-                                        </a>
-                                   </li>
-                                   <li>
-                                        <a href="/about" className="hover:text-orange-500">
-                                             {language === "en" ? "About" : "ስለ እኛ"}
-                                        </a>
-                                   </li>
-                                   <li>
-                                        <a href="/products" className="hover:text-orange-500">
-                                             {language === "en" ? "Products" : "ምርቶች"}
-                                        </a>
-                                   </li>
-                                   <li>
-                                        <a href="/contact" className="hover:text-orange-500">
-                                             {language === "en" ? "Contact" : "ያግኙን"}
-                                        </a>
-                                   </li>
-                              </ul>
-                         </div>
-
+                    <div className="flex flex-wrap py-3 mt-8 gap-8 md:gap-16 md:p-0 md:mt-0">
                          <div>
                               <h3 className="text-white font-semibold mb-4">
                                    {language === "en" ? " Services" : "አገልግሎቶች"}
                               </h3>
                               <ul className="space-y-2 text-sm">
                                    <li>{language === "en" ? "Mobile App Development" : "የሞባይል መተግበሪያ ልማት"}</li>
-                                   <li>{language === "en" ? "Websites Development" : "የዌብሳይት ልማት"}</li>
+                                   <li>{language === "en" ? "Website Development" : "የዌብሳይት ልማት"}</li>
                                    <li>{language === "en" ? "Web Application Development" : "የዌብ አፕሊኬሽን ልማት"}</li>
-                                   <li>{language === "en" ? "Desktop Software Development" : "የዌብ አፕሊኬሽን ልማት"}</li>
+                                   <li>{language === "en" ? "Computer Software Development" : "የኮምፕዮተር ሶፍትዌር ልማት"}</li>
                               </ul>
                          </div>
 
@@ -84,8 +57,8 @@ export default function Footer() {
                               <h3 className="text-white font-semibold mb-4">
                                    {language === "en" ? "Contact Us" : "አድራሻ"}</h3>
                               <ul className="space-y-2 text-sm">
-                                   <li>{language === "en" ? "Email: eleltech21@gmail.com" : "ኢሜይል፦ Eleltechsystems@gmail.com"}</li>
-                                   <li>{language === "en" ? "Location: Addis Abeba, Ethiopia" : "አድራሻ፦ አዲስ አበባ፣ ኢትዮጵያ"}</li>
+                                   <li>{language === "en" ? "Email: Eleltechsystems@gmail.com" : "ኢሜይል፦ Eleltechsystems@gmail.com"}</li>
+                                   <li>{language === "en" ? "Location: Addis Abeba, Ethiopia" : "መገኛ ቦታ፦ አዲስ አበባ ፣ ኢትዮጵያ"}</li>
                               </ul>
                               <div className="flex gap-4 mt-4 text-xl">
                                    <a
@@ -95,13 +68,13 @@ export default function Footer() {
                                         <FaFacebook />
                                    </a>
                                    <a
-                                        href="https://www.youtube.com/@EleltechSystems"
+                                        href="https://www.youtube.com/channel/UCGTCBy4tZ-qWEz4hFaHI05w"
                                         target="_blank"
                                         className="hover:text-red-500">
                                         <FaYoutube />
                                    </a>
                                    <a
-                                        href="https://www.tiktok.com/@eleltechsystems"
+                                        href="https://www.tiktok.com/@eleltech_systems"
                                         target="_blank"
                                         className="hover:text-purple-500">
                                         <FaTiktok />
@@ -115,6 +88,11 @@ export default function Footer() {
                               </div>
                          </div>
                     </div>
+               </div>
+               <div className="max-w-7xl mx-auto flex justify-end p-3">
+                    <a href="/" className="rounded-full bg-orange-600 p-2">
+                         <FaArrowUp />
+                    </a>
                </div>
 
                <div className="border-t max-w-7xl mx-auto border-gray-500 mt-10 py-6 text-center text-sm text-gray-100">

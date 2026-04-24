@@ -27,7 +27,6 @@ export default function Home() {
                               :
                               "በእልልቴክ ሲስተምስ የበለጸጉ የተለያዩ የሶፍትዌር ምርቶችን እዚህ ያገኛሉ።"
                          }
-
                     </p>
                     <div className='flex items-center gap-3 mt-4'>
                          <p className='font-semibold text-sm md:text-xl'>

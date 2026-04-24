@@ -4,8 +4,13 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import elellogo1 from '../assets/images/elellogo1.webp';
 import { LanguageContext } from './LanguageContext';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signoutSuccess } from '../redux/user/userSlice.js';
 
 export default function Header() {
+     const location = useLocation();
+     const dispatch = useDispatch();
      const [activeSection, setActiveSection] = useState("home");
      const [isMenuOpen, setIsMenuOpen] = useState(false)
      const { language, setLanguage } = useContext(LanguageContext);
@@ -43,6 +48,29 @@ export default function Header() {
           }
      };
 
+     // Define paths where Navbar should NOT be shown
+     const hideNavbarOn = ['/profile', '/signin', '/signup'];
+
+     // Check if the current pathname is in the excluded list
+     const showNavbar = !hideNavbarOn.includes(location.pathname);
+
+     const handleSignout = async (e) => {
+          e.preventDefault();
+          try {
+               const res = await fetch("/server/auth/signout", {
+                    method: 'POST',
+               });
+               const data = res.json();
+               if (!res.ok) {
+                    console.log(data.message);
+               } else {
+                    dispatch(signoutSuccess());
+               }
+          } catch (error) {
+               console.log(error);
+          }
+     }
+
 
      return (
           <motion.nav
@@ -52,51 +80,63 @@ export default function Header() {
                viewport={{ once: true }}
                className="fixed top-0 left-0 right-0 px-4 bg-linear-to-r from-blue-200 via-amber-100 to-orange-200 backdrop-blur-sm z-50">
 
-               <div className="w-full flex justify-between items-center h-12 sm:h-16 lg:max-w-7xl mx-auto">
-                    <a href='#' onClick={() => setActiveSection("home")} className='bg-orange-500 rounded-lg  shadow-lg'>
+               <div className="w-full flex items-center justify-between h-12 sm:h-16 lg:max-w-7xl mx-auto">
+                    <a href='/' onClick={() => setActiveSection("home")} className='bg-orange-500 rounded-lg  shadow-lg'>
                          <img
                               src={elellogo1}
                               alt="elellogo"
                               className="w-16 sm:w-20"
                          />
                     </a>
+                    {location.pathname === "/profile" &&
+                         <span
+                              onClick={handleSignout}
+                              className='cursor-pointer px-2 pb-0.5 pt-0.5 sm:pb-1.5 sm:pt-1 rounded-sm text-blue-700 hover:underline'
+                         >
+                              Sign Out
+                         </span>
+                    }
 
                     {/* ------ Navigation Links - Desktop ------*/}
-                    <motion.div
-                         variants={fadeIn('down', 0.3)}
-                         className="hidden sm:flex items-center gap-10">
-                         {navLinksDesktop.map((link, index) => (
-                              <button
-                                   key={index}
-                                   onClick={() => { handleNavigation(link.id), setActiveSection(link.id) }}
-                                   className={`text-base font-semibold relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:transition-all ${activeSection === link.id
-                                        ? "text-orange-600 after:w-full after:bg-orange-600"
-                                        : "text-gray-600 hover:text-orange-500 after:w-0 hover:after:w-full hover:after:bg-orange-400"
-                                        }`}
-                              >
-                                   {link.label}
+                    {showNavbar &&
+                         <motion.div
+                              variants={fadeIn('down', 0.3)}
+                              className="hidden sm:flex items-center gap-10">
+                              {navLinksDesktop.map((link, index) => (
+                                   <button
+                                        key={index}
+                                        onClick={() => { handleNavigation(link.id), setActiveSection(link.id) }}
+                                        className={`text-base font-semibold relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:transition-all ${activeSection === link.id
+                                             ? "text-orange-600 after:w-full after:bg-orange-600"
+                                             : "text-gray-600 hover:text-orange-500 after:w-0 hover:after:w-full hover:after:bg-orange-400"
+                                             }`}
+                                   >
+                                        {link.label}
+                                   </button>
+                              ))}
+
+                              <button onClick={toggleLanguage} className='bg-orange-500 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
+                                   {language === "en" ? "አማ" : "EN"}
                               </button>
-                         ))}
-
-                         <button onClick={toggleLanguage} className='bg-orange-600 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
-                              {language === "en" ? "አማ" : "EN"}
-                         </button>
-                    </motion.div>
+                         </motion.div>
+                    }
 
 
-                    <div className='flex items-center sm:hidden'>
-                         <button onClick={toggleLanguage} className='bg-orange-600 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
-                              {language === "en" ? "አማ" : "EN"}
-                         </button>
+                    {showNavbar &&
+                         <div className='flex items-center sm:hidden'>
+                              <button onClick={toggleLanguage} className='bg-orange-500 px-2 pb-0.5 md:px-3 text-sm text-center rounded-sm text-white cursor-pointer'>
+                                   {language === "en" ? "አማ" : "EN"}
+                              </button>
 
-                         {/* ----------- Mobile Menu Button --------- */}
-                         <motion.button
-                              variants={fadeIn('down', 0.1)}
-                              className="sm:hidden p-2"
-                              onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                              {isMenuOpen ? (<HiX className="h-6 w-6" />) : (<HiMenu className="h-6 w-6" />)}
-                         </motion.button>
-                    </div>
+                              {/* ----------- Mobile Menu Button --------- */}
+                              <motion.button
+                                   variants={fadeIn('down', 0.1)}
+                                   className="sm:hidden p-2"
+                                   onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                   {isMenuOpen ? (<HiX className="h-6 w-6" />) : (<HiMenu className="h-6 w-6" />)}
+                              </motion.button>
+                         </div>
+                    }
                </div>
 
 
